@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Open Console.log</title>
+</head>
+
+<body>
+    <pre id="print"></pre>
+    <script>
+        function getRandomRgb() {
+            let num = Math.round(0xffffff * Math.random());
+            let r = num >> 16;
+            let g = (num >> 8) & 255;
+            let b = num & 255;
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+
+        const christmas = [
+            "              .!,            .!,",
+            "             ~ 6 ~          ~ 6 ~",
+            "        .    ' i `  .-^-.   ' i `",
+            "      _.|,_   | |  / .-. \   | |",
+            "       '|`   .|_|.| (-` ) | .|_|.",
+            "       / \ ___)_(_|__`-'__|__)_(______",
+            "       /`,o\)_______________________o_(",
+            "      /_* ~_\[___]___[___]___[___[_[\`-.",
+            "      / o .'\[_]___[___]___[___]_[___)`-)",
+            "    /_,~' *_\_]                 [_[(  (",
+            "     /`. *  *\_]                 [___\ _\ ",
+            "    /   `~. o \]      ;( ( ;     [_[_]`-'",
+            "   /_ *    `~,_\    (( )( ;(;    [___]",
+            "   /   o  *  ~'\   /\ /\ /\ /\   [_[_]",
+            " / *    .~~'  o\  ||_||_||_||   [___]",
+            "/_,.~~'`    *  _\_||_||_||_||___[_[_]_",
+            " /`~..  o        \ ::::::::::::::::::::: \ ",
+            " / *  . .   *     \ ::::::::::::::::::::: \ ",
+            ' /_     o    ``~~.,,_\=========\_/=========" ',
+            "/  *      *     ..~'\         _|_ .-_--.",
+            "/*    o   _..~~`'*   o\           ( (_)  )",
+            "`-.__.~'`'   *   ___.-'            `----'",
+            '   " :-------: "',
+            "     \_____/"
+        ].join("\n");
+
+        const log = console.log;
+        var rgb = getRandomRgb();
+
+        const draw = (rgb) => {
+            rgb = getRandomRgb();
+            log(`'%c ${christmas}'`, `color:${rgb}`);
+            const print = document.getElementById("print");
+            print.innerHTML = christmas;
+            print.style.color = rgb;
+        }
+        setTimeout(() => {
+            location.reload(true);
+
+        }, 3000);
+        draw()
+    </script>
+</body>
+
+</html>
